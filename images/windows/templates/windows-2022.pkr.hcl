@@ -23,7 +23,9 @@ variable "allowed_inbound_ip_addresses" {
 
 variable "azure_tags" {
   type    = map(string)
-  default = {}
+  default = {
+    ExcludeMdeAutoProvisioning = "True"
+  }
 }
 
 variable "build_resource_group_name" {
