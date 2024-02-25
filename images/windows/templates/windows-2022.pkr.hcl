@@ -22,10 +22,8 @@ variable "allowed_inbound_ip_addresses" {
 }
 
 variable "azure_tags" {
-  type    = map()
-  default = {
-    ExcludeMdeAutoProvisioning = "True"
-  }
+  type    = map(string)
+  default = {}
 }
 
 variable "build_resource_group_name" {
@@ -178,14 +176,9 @@ source "azure-arm" "image" {
   winrm_insecure                         = "true"
   winrm_use_ssl                          = "true"
   winrm_username                         = "packer"
-
-  dynamic "azure_tag" {
-    for_each = var.azure_tags
-    content {
-      name  = azure_tag.key
-      value = azure_tag.value
-    }
-  }
+  azure_tags                             = {
+                                              ExcludeMdeAutoProvisioning = "True"
+                                           }
 }
 
 build {
