@@ -176,7 +176,7 @@ source "azure-arm" "image" {
   winrm_insecure                         = "true"
   winrm_use_ssl                          = "true"
   winrm_username                         = "packer"
-  azure_tag = {
+  azure_tags = {
     ExcludeMdeAutoProvisioning = "True"
   }
 }
