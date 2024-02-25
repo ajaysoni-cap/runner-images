@@ -22,7 +22,7 @@ variable "allowed_inbound_ip_addresses" {
 }
 
 variable "azure_tags" {
-  type    = map(string)
+  type    = map()
   default = {
     ExcludeMdeAutoProvisioning = "True"
   }
